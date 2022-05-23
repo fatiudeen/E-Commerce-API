@@ -8,8 +8,6 @@ export default {
     check('category').exists().isString().trim(),
     check('subcategory').exists().isString().trim(),
     check('img').custom(function (value, { req }) {
-      console.log(req.body, req.files);
-
       const extension = path.extname(req.files[0].originalname).toLowerCase();
       switch (extension) {
         case '.jpg':
@@ -38,6 +36,7 @@ export default {
   updateImg: [
     check('oldImgKey').exists().isString().trim(),
     check('img').custom(function (value, { req }) {
+      //TODO add loop function
       const extension = path.extname(req.files[0].originalname).toLowerCase();
       switch (extension) {
         case '.jpg':
